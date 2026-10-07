@@ -1,0 +1,11 @@
+.game-controller {
+  display:block;
+  aspect-ratio: 415 / 302;
+
+  background-color: currentColor;
+
+  mask-image: url("/assets/images/icons/game-controller.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}

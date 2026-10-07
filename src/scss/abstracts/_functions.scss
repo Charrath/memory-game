@@ -1,0 +1,27 @@
+@use "sass:math";
+
+$design-width: 1440;
+$design-height: 1024;
+
+@function scale($value) {
+  $number: math.div($value, 1px);
+
+  @if $number >= 0 {
+    @return min(
+      #{$number * math.div(100vw, $design-width)},
+      #{$number * math.div(100vh, $design-height)},
+      #{$value}
+    );
+  }
+
+  $positive-number: math.abs($number);
+  $positive-value: math.abs($value);
+
+  @return calc(
+    -1 * min(
+      #{$positive-number * math.div(100vw, $design-width)},
+      #{$positive-number * math.div(100vh, $design-height)},
+      #{$positive-value}
+    )
+  );
+}

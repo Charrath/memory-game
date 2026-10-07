@@ -1,0 +1,19 @@
+@use "../abstracts" as a;
+
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: inherit;
+  
+
+  border: none;
+  cursor: pointer;
+
+  &--primary {
+    background-color: rgba(240, 234, 110, 1);
+    color: rgba(48, 49, 49, 1);
+  }
+}
