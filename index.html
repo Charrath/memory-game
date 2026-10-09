@@ -9,7 +9,7 @@
   </head>
   <body>
     <main>
-      <section id="home-screen" class="home">
+      <section id="home-screen" class="home" hidden>
         <header>
           <p class="home__subtitle">It's play time.</p>
           <h1 class="home__title">Ready to play?</h1>
@@ -31,6 +31,36 @@
         </button>
       </section>
 
+      <section id="settings-screen" class="settings">
+        <h1>Settings</h1>
+        <img src="/public/assets/images/icons/long-yellow-line.svg" alt="" />
+
+        <fieldset class="settings__themes">
+          <legend class="settings__legend">Game themes</legend>
+
+          <div class="settings__options">
+            <label class="settings__option">
+              <input type="radio" name="theme" value="coding" checked />
+              Code vibes theme
+            </label>
+
+            <label class="settings__option">
+              <input type="radio" name="theme" value="gaming" />
+              Gaming theme
+            </label>
+
+            <label class="settings__option">
+              <input type="radio" name="theme" value="projects" />
+              DA Projects theme
+            </label>
+
+            <label class="settings__option">
+              <input type="radio" name="theme" value="foods" />
+              Foods theme
+            </label>
+          </div>
+        </fieldset>
+      </section>
     </main>
     <!-- <section id="field">
       <button class="card">

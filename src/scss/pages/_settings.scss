@@ -1,0 +1,46 @@
+@use "../abstracts" as a;
+
+.setting {
+  position: relative;
+  color: black;
+
+  background-color: white;
+}
+
+.settings {
+  background-color: white;
+  color: black;
+
+  h1 {
+    font-size: a.scale(54px);
+  }
+
+  &__themes {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  &__legend {
+    margin-bottom: a.scale(24px);
+    font-size: a.scale(24px);
+    font-weight: 700;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: a.scale(12px);
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: a.scale(12px);
+
+    font-size: a.scale(20px);
+    accent-color: #000;
+    cursor: pointer;
+  }
+}

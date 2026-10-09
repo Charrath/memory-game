@@ -26,4 +26,25 @@ main {
   max-height: 1024px;
 }
 
+main > section {
+  position: relative;
+  isolation: isolate;
 
+  font-family: "Almarai", sans-serif;
+
+  width: 100%;
+  height: 100%;
+
+  &::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-color: inherit;
+    z-index: -1;
+  }
+}
+
+h1 {
+  font-family: "Red Rose", sans-serif;
+}
