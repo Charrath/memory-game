@@ -32,34 +32,74 @@
       </section>
 
       <section id="settings-screen" class="settings">
-        <h1>Settings</h1>
-        <img src="/public/assets/images/icons/long-yellow-line.svg" alt="" />
+        <div class="settings__content">
+          <h1>Settings</h1>
+          <img src="/public/assets/images/icons/long-yellow-arrow.svg" alt="" />
 
-        <fieldset class="settings__themes">
-          <legend class="settings__legend">Game themes</legend>
+          <fieldset>
+            <legend class="settings__legend settings__legend--themes">
+              Game themes
+            </legend>
 
-          <div class="settings__options">
-            <label class="settings__option">
-              <input type="radio" name="theme" value="coding" checked />
-              Code vibes theme
-            </label>
+            <div class="settings__options">
+              <label class="settings__option">
+                <input type="radio" name="theme" value="coding" checked />
+                Code vibes theme
+              </label>
 
-            <label class="settings__option">
-              <input type="radio" name="theme" value="gaming" />
-              Gaming theme
-            </label>
+              <label class="settings__option">
+                <input type="radio" name="theme" value="gaming" />
+                Gaming theme
+              </label>
 
-            <label class="settings__option">
-              <input type="radio" name="theme" value="projects" />
-              DA Projects theme
-            </label>
+              <label class="settings__option">
+                <input type="radio" name="theme" value="projects" />
+                DA Projects theme
+              </label>
 
-            <label class="settings__option">
-              <input type="radio" name="theme" value="foods" />
-              Foods theme
-            </label>
-          </div>
-        </fieldset>
+              <label class="settings__option">
+                <input type="radio" name="theme" value="foods" />
+                Foods theme
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="settings__legend settings__legend--player">
+              Choose player
+            </legend>
+
+            <div class="settings__options">
+              <label class="settings__option">
+                <input type="radio" name="player" value="blue" />
+                Blue
+              </label>
+
+              <label class="settings__option">
+                <input type="radio" name="player" value="orange" />
+                Orange
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend class="settings__legend settings__legend--board">
+              Board size
+            </legend>
+            <div class="settings__options">
+              <label class="settings__option">
+                <input type="radio" name="board" value="16" />
+                16 cards
+              </label>
+              <label class="settings__option">
+                <input type="radio" name="board" value="24" />
+                24 cards
+              </label>
+              <label class="settings__option">
+                <input type="radio" name="board" value="32" />
+                32 cards
+              </label>
+            </div>
+          </fieldset>
+        </div>
       </section>
     </main>
     <!-- <section id="field">

@@ -15,23 +15,56 @@
     font-size: a.scale(54px);
   }
 
-  &__themes {
+  fieldset {
     width: 100%;
-    margin: 0;
     padding: 0;
     border: none;
+    margin-top: a.scale(48px);
+  }
+
+  &__content {
+    padding-top: a.scale(120px);
+    padding-left: a.scale(170px);
   }
 
   &__legend {
-    margin-bottom: a.scale(24px);
+    margin-bottom: a.scale(8px);
     font-size: a.scale(24px);
     font-weight: 700;
+
+    &::before {
+      content: "";
+      display: inline-block;
+
+      width: a.scale(32px);
+      height: a.scale(32px);
+      margin-right: a.scale(12px);
+
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      vertical-align: middle;
+    }
+
+    &--themes::before {
+      background-image: url("/assets/images/icons/game-themes.svg");
+    }
+
+    &--player::before {
+      background-image: url("/assets/images/icons/choose-player.svg");
+    }
+
+    &--board::before {
+      background-image: url("/assets/images/icons/board-size.svg");
+    }
   }
 
   &__options {
     display: flex;
     flex-direction: column;
     gap: a.scale(12px);
+    margin-left: a.scale(56px);
   }
 
   &__option {
@@ -40,7 +73,30 @@
     gap: a.scale(12px);
 
     font-size: a.scale(20px);
+    line-height: 1;
     accent-color: #000;
     cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+
+      width: a.scale(43px);
+      height: a.scale(18px);
+      flex-shrink: 0;
+
+      background-image: url("/assets/images/icons/yellow-arrow.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    &:has(input:checked) {
+      font-weight: 700;
+    }
+
+    &:not(:has(input:checked))::after {
+      display: none;
+    }
   }
 }
