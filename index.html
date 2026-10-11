@@ -9,8 +9,7 @@
   </head>
   <body>
     <main>
-
-      <section id="home-screen" class="home">
+      <section id="home-screen" class="home" hidden>
         <header class="home__header">
           <p class="home__subtitle">It's play time.</p>
           <h1 class="home__title">Ready to play?</h1>
@@ -26,7 +25,7 @@
         </button>
       </section>
 
-      <section id="settings-screen" class="settings" hidden>
+      <section id="settings-screen" class="settings">
         <div class="settings__content">
           <header>
             <h1 class="settings__title">Settings</h1>
@@ -38,97 +37,102 @@
           </header>
 
           <form class="settings__form">
+            <div class="settings__left">
+              <fieldset class="settings__fieldset">
+                <legend class="settings__legend settings__legend--themes">
+                  Game themes
+                </legend>
+                <div class="settings__options">
+                  <label class="settings__option">
+                    <input type="radio" name="theme" value="coding" checked />
+                    Code vibes theme
+                  </label>
 
-            <fieldset class="settings__fieldset">
-              <legend class="settings__legend settings__legend--themes">
-                Game themes
-              </legend>
-              <div class="settings__options">
-                <label class="settings__option">
-                  <input type="radio" name="theme" value="coding" checked />
-                  Code vibes theme
-                </label>
+                  <label class="settings__option">
+                    <input type="radio" name="theme" value="gaming" />
+                    Gaming theme
+                  </label>
 
-                <label class="settings__option">
-                  <input type="radio" name="theme" value="gaming" />
-                  Gaming theme
-                </label>
+                  <label class="settings__option">
+                    <input type="radio" name="theme" value="projects" />
+                    DA Projects theme
+                  </label>
 
-                <label class="settings__option">
-                  <input type="radio" name="theme" value="projects" />
-                  DA Projects theme
-                </label>
+                  <label class="settings__option">
+                    <input type="radio" name="theme" value="foods" />
+                    Foods theme
+                  </label>
+                </div>
+              </fieldset>
 
-                <label class="settings__option">
-                  <input type="radio" name="theme" value="foods" />
-                  Foods theme
-                </label>
-              </div>
-            </fieldset>
+              <fieldset class="settings__fieldset">
+                <legend class="settings__legend settings__legend--player">
+                  Choose player
+                </legend>
+                <div class="settings__options">
+                  <label class="settings__option">
+                    <input type="radio" name="player" value="blue" />
+                    Blue
+                  </label>
 
-            <fieldset class="settings__fieldset">
-              <legend class="settings__legend settings__legend--player">
-                Choose player
-              </legend>
-              <div class="settings__options">
-                <label class="settings__option">
-                  <input type="radio" name="player" value="blue" />
-                  Blue
-                </label>
+                  <label class="settings__option">
+                    <input type="radio" name="player" value="orange" />
+                    Orange
+                  </label>
+                </div>
+              </fieldset>
 
-                <label class="settings__option">
-                  <input type="radio" name="player" value="orange" />
-                  Orange
-                </label>
-              </div>
-            </fieldset>
-
-            <fieldset class="settings__fieldset">
-              <legend class="settings__legend settings__legend--board">
-                Board size
-              </legend>
-              <div class="settings__options">
-                <label class="settings__option">
-                  <input type="radio" name="board" value="16" />
-                  16 cards
-                </label>
-                <label class="settings__option">
-                  <input type="radio" name="board" value="24" />
-                  24 cards
-                </label>
-                <label class="settings__option">
-                  <input type="radio" name="board" value="36" />
-                  32 cards
-                </label>
-              </div>
-            </fieldset>
-
-            <div class="settings__preview-themes"></div>
-
-            <div class="settings__chosen-settings">
-              <span>Code vibes theme</span>
-              <img
-                class="settings__chosen-settings-img"
-                src="/public/assets/images/icons/yellow-arrow.svg"
-                alt=""
-              />
-              <span>Blue Player</span>
-              <img
-                class="settings__chosen-settings-img"
-                src="/public/assets/images/icons/yellow-arrow.svg"
-                alt=""
-              />
-              <span>Board 16 Cards</span>
-              <button class="settings__button button button--primary">
-                <img class="settings__button-icon" src="/public/assets/images/settings/start.svg" alt="" />
-                <span> Start </span>
-              </button>
+              <fieldset class="settings__fieldset">
+                <legend class="settings__legend settings__legend--board">
+                  Board size
+                </legend>
+                <div class="settings__options">
+                  <label class="settings__option">
+                    <input type="radio" name="board" value="16" />
+                    16 cards
+                  </label>
+                  <label class="settings__option">
+                    <input type="radio" name="board" value="24" />
+                    24 cards
+                  </label>
+                  <label class="settings__option">
+                    <input type="radio" name="board" value="36" />
+                    32 cards
+                  </label>
+                </div>
+              </fieldset>
             </div>
 
+            <div class="settings__right">
+              <div class="settings__preview-themes"></div>
+
+              <div class="settings__chosen-settings">
+                <span>Code vibes theme</span>
+                <img
+                  class="settings__chosen-settings-img"
+                  src="/public/assets/images/icons/yellow-arrow.svg"
+                  alt=""
+                />
+                <span>Blue Player</span>
+                <img
+                  class="settings__chosen-settings-img"
+                  src="/public/assets/images/icons/yellow-arrow.svg"
+                  alt=""
+                />
+                <span>Board 16 Cards</span>
+                <button class="settings__button button button--primary">
+                  <img
+                    class="settings__button-icon"
+                    src="/public/assets/images/settings/start.svg"
+                    alt=""
+                  />
+                  <span> Start </span>
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </section>
-
     </main>
     <!-- <section id="field">
       <button class="card">

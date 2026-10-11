@@ -1,11 +1,5 @@
 @use "../abstracts" as a;
 
-.setting {
-  position: relative;
-  color: black;
-
-  background-color: white;
-}
 
 .settings {
   background-color: white;
@@ -13,6 +7,11 @@
 
   display: grid;
   place-items: center;
+
+  &__content {
+    width: min(100%, a.scale(1103px));
+    transform: translateY(a.scale(-70px));
+  }
 
   &__title {
     font-size: a.scale(54px);
@@ -25,15 +24,32 @@
   }
 
   &__form {
-    position: relative;
-    width: a.scale(1103px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: a.scale(60px);
+
+    width: min(100%, a.scale(1103px));
+    margin-top: a.scale(40px);
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: a.scale(48px);
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: a.scale(40px);
   }
 
   &__fieldset {
     width: 100%;
     padding: 0;
     border: none;
-    margin-top: a.scale(48px);
   }
 
   &__legend {
@@ -121,9 +137,6 @@
   }
 
   &__preview-themes {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: a.scale(460px);
     height: a.scale(412px);
 
@@ -157,18 +170,14 @@
   }
 
   &__chosen-settings {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-    padding: a.scale(14px) a.scale(20px);
-
     display: flex;
-
     align-items: center;
+    padding: a.scale(14px) a.scale(20px);
 
     font-size: a.scale(20px);
     font-weight: 400;
+    white-space: nowrap;
+
     background-color: rgba(246, 246, 246, 1);
 
     &-img {
@@ -199,14 +208,11 @@
       .settings__button-icon {
         transform: rotate(-25deg);
       }
-
     }
 
     &-icon {
       height: a.scale(24px);
       transition: transform 0.3s ease;
     }
-
-    
   }
 }
