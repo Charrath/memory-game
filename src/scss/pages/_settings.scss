@@ -11,25 +11,35 @@
   background-color: white;
   color: black;
 
-  h1 {
+  display: grid;
+  place-items: center;
+
+  &__title {
     font-size: a.scale(54px);
+
+    transform: translate(a.scale(20px), a.scale(8px));
   }
 
-  fieldset {
+  &__title-img {
+    width: a.scale(263px);
+  }
+
+  &__form {
+    position: relative;
+    width: a.scale(1103px);
+  }
+
+  &__fieldset {
     width: 100%;
     padding: 0;
     border: none;
     margin-top: a.scale(48px);
   }
 
-  &__content {
-    padding-top: a.scale(120px);
-    padding-left: a.scale(170px);
-  }
-
   &__legend {
-    margin-bottom: a.scale(8px);
+    margin-bottom: a.scale(24px);
     font-size: a.scale(24px);
+
     font-weight: 700;
 
     &::before {
@@ -91,6 +101,16 @@
       background-size: contain;
     }
 
+    input[type="radio"] {
+      width: a.scale(20px);
+      height: a.scale(20px);
+      margin: 0;
+      flex-shrink: 0;
+
+      accent-color: #000;
+      cursor: pointer;
+    }
+
     &:has(input:checked) {
       font-weight: 700;
     }
@@ -98,5 +118,95 @@
     &:not(:has(input:checked))::after {
       display: none;
     }
+  }
+
+  &__preview-themes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: a.scale(460px);
+    height: a.scale(412px);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &:has(input[value="coding"]:checked) {
+    .settings__preview-themes {
+      background-image: url("/assets/images/settings/themes/code.png");
+    }
+  }
+
+  &:has(input[value="gaming"]:checked) {
+    .settings__preview-themes {
+      background-image: url("/assets/images/settings/themes/gaming.png");
+    }
+  }
+
+  &:has(input[value="projects"]:checked) {
+    .settings__preview-themes {
+      background-image: url("/assets/images/settings/themes/projects.png");
+    }
+  }
+
+  &:has(input[value="foods"]:checked) {
+    .settings__preview-themes {
+      background-image: url("/assets/images/settings/themes/foods.png");
+    }
+  }
+
+  &__chosen-settings {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    padding: a.scale(14px) a.scale(20px);
+
+    display: flex;
+
+    align-items: center;
+
+    font-size: a.scale(20px);
+    font-weight: 400;
+    background-color: rgba(246, 246, 246, 1);
+
+    &-img {
+      width: a.scale(56px);
+      height: auto;
+      flex-shrink: 0;
+
+      transform: rotate(109.33deg);
+    }
+  }
+
+  &__button {
+    gap: a.scale(8px);
+    margin-left: a.scale(16px);
+
+    height: a.scale(53px);
+    width: a.scale(126px);
+
+    font-size: a.scale(20px);
+    font-weight: 700;
+    font-family: "Red Rose", sans-serif;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+
+      .settings__button-icon {
+        transform: rotate(-25deg);
+      }
+
+    }
+
+    &-icon {
+      height: a.scale(24px);
+      transition: transform 0.3s ease;
+    }
+
+    
   }
 }
