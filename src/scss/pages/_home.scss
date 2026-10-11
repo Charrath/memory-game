@@ -2,16 +2,20 @@
 
 .home {
   position: relative;
-  color: rgba(255, 255, 255, 1);
 
+  display: grid;
+  grid-template-rows: 1.18fr auto auto 0.9fr;
+  justify-items: center;
+  align-content: center;
+  row-gap: a.scale(80px);
+
+  color: rgba(255, 255, 255, 1);
   background-color: rgba(48, 49, 49, 1);
   overflow: hidden;
 
-   header {
-    position: absolute;
-    top: 33%;
-    left: 50%;
-    transform: translateX(-50%);
+  &__header {
+    grid-row: 2;
+    z-index: 1;
   }
 
   &__subtitle {
@@ -22,7 +26,6 @@
   &__title {
     font-size: a.scale(140px);
     font-weight: 700;
-
     white-space: nowrap;
   }
 
@@ -31,20 +34,19 @@
 
     width: a.scale(415px);
 
-    bottom: a.scale(80px);
+    bottom: a.scale(82px);
     left: a.scale(-40px);
 
     color: rgba(240, 234, 110, 1);
     opacity: 0.05;
 
     transform: rotate(37.42deg);
+    pointer-events: none;
   }
 
   &__button {
-    position: absolute;
-    top: 63.77%;
-    left: 50%;
-    transform: translateX(-50%);
+    grid-row: 3;
+    z-index: 1;
 
     gap: a.scale(16px);
 
@@ -53,10 +55,10 @@
 
     font-size: a.scale(40px);
 
-    transition: transform 0.3s ease;
+    transition: scale 0.3s ease;
 
     &:hover {
-      transform: translateX(-50%) scale(1.05);
+      scale: 1.05;
 
       .home__button-icon {
         transform: rotate(-25deg);
