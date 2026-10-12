@@ -48,3 +48,14 @@ main > section {
 h1 {
   font-family: "Red Rose", sans-serif;
 }
+
+@media (max-width: 768px) {
+  body {
+    align-items: stretch;
+  }
+
+  main {
+    max-height: none;
+    height: 100dvh;
+  }
+}

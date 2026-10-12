@@ -25,3 +25,24 @@ $design-height: 1024;
     )
   );
 }
+
+@function font-scale($size) {
+  $rem: math.div($size, 16px) * 1rem;
+
+  $min: 1rem;
+
+  @if $rem >= 2rem {
+    $min: 2rem;
+  } @else if $rem >= 1.5rem {
+    $min: 1.25rem;
+  }
+
+  $number: math.div($size, 1px);
+
+  $responsive: min(
+    #{$number * math.div(100vw, 1440)},
+    #{$number * math.div(100vh, 1024)}
+  );
+
+  @return clamp(#{$min}, #{$responsive}, #{$rem});
+}

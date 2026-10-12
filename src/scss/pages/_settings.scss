@@ -1,6 +1,5 @@
 @use "../abstracts" as a;
 
-
 .settings {
   background-color: white;
   color: black;
@@ -14,13 +13,14 @@
   }
 
   &__title {
-    font-size: a.scale(54px);
+    font-size: a.font-scale(54px);
 
     transform: translate(a.scale(20px), a.scale(8px));
   }
 
   &__title-img {
     width: a.scale(263px);
+    min-width: 160px;
   }
 
   &__form {
@@ -54,7 +54,7 @@
 
   &__legend {
     margin-bottom: a.scale(24px);
-    font-size: a.scale(24px);
+    font-size: a.font-scale(24px);
 
     font-weight: 700;
 
@@ -62,8 +62,8 @@
       content: "";
       display: inline-block;
 
-      width: a.scale(32px);
-      height: a.scale(32px);
+      width: a.font-scale(32px);
+      height: a.font-scale(32px);
       margin-right: a.scale(12px);
 
       background-position: center;
@@ -98,7 +98,7 @@
     align-items: center;
     gap: a.scale(12px);
 
-    font-size: a.scale(20px);
+    font-size: a.font-scale(20px);
     line-height: 1;
     accent-color: #000;
     cursor: pointer;
@@ -107,8 +107,8 @@
       content: "";
       display: block;
 
-      width: a.scale(43px);
-      height: a.scale(18px);
+      width: a.font-scale(43px);
+      height: a.font-scale(18px);
       flex-shrink: 0;
 
       background-image: url("/assets/images/icons/yellow-arrow.svg");
@@ -174,7 +174,7 @@
     align-items: center;
     padding: a.scale(14px) a.scale(20px);
 
-    font-size: a.scale(20px);
+    font-size: a.font-scale(20px);
     font-weight: 400;
     white-space: nowrap;
 
@@ -196,7 +196,7 @@
     height: a.scale(53px);
     width: a.scale(126px);
 
-    font-size: a.scale(20px);
+    font-size: a.font-scale(20px);
     font-weight: 700;
     font-family: "Red Rose", sans-serif;
 
@@ -211,8 +211,142 @@
     }
 
     &-icon {
-      height: a.scale(24px);
+      height: a.font-scale(24px);
       transition: transform 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .settings {
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+
+    &__options {
+      clear: both;
+      margin-left: 0;
+    }
+
+    &__option {
+      gap: 6px;
+      font-size: a.font-scale(16px);
+      line-height: 1.3;
+    }
+
+    &__option::after {
+      display: none;
+    }
+
+    &__content {
+      width: 100%;
+      min-height: 100dvh;
+      padding: 24px 16px 0;
+      transform: none;
+      height: auto;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-size: a.font-scale(54px);
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 32px;
+      height: auto;
+      width: 100%;
+    }
+
+    &__left {
+      gap: 16px;
+    }
+
+    &__fieldset {
+      background-color: #f8f8f8;
+      border-radius: 12px;
+      padding: 8px;
+      min-width: 0;
+    }
+
+    &__fieldset:has(input[name="theme"]) &__options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 10px;
+    }
+
+    &__fieldset:has(input[name="player"]) &__options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    &__fieldset:has(input[name="board"]) &__options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+     &__legend {
+      float: left;
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 0;
+      font-size: a.font-scale(22px);
+      text-align: left;
+    }
+
+    &__legend::before {
+      display: none;
+    }
+
+    &__right {
+      flex: 1;
+      align-items: stretch;
+      justify-content: flex-start;
+    }
+
+    &__preview-themes {
+      width: min(100%, 460px);
+      height: auto;
+      aspect-ratio: 460 / 412;
+      align-self: center;
+    }
+
+    &__chosen-settings {
+      width: calc(100% + 32px);
+      margin: auto 0 0 -16px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+
+      gap: 16px;
+      padding: 20px 16px;
+
+      white-space: normal;
+    }
+
+    &__chosen-settings-img,
+    &__title-img {
+      display: none;
+    }
+
+    &__button {
+      flex-basis: 100%;
+      width: 100%;
+      min-height: 53px;
+      margin: 8px 0 0;
     }
   }
 }
