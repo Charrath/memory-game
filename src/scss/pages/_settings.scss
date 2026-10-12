@@ -246,7 +246,7 @@
     &__content {
       width: 100%;
       min-height: 100dvh;
-      padding: 24px 16px 0;
+      padding: 8px 16px 0;
       transform: none;
       height: auto;
 
@@ -255,14 +255,14 @@
     }
 
     &__title {
-      font-size: a.font-scale(54px);
+      display: none;
     }
 
     &__form {
       display: flex;
       flex-direction: column;
       flex: 1;
-      gap: 32px;
+      gap: 8px;
       height: auto;
       width: 100%;
     }
@@ -272,41 +272,34 @@
     }
 
     &__fieldset {
-      background-color: #f8f8f8;
-      border-radius: 12px;
       padding: 8px;
-      min-width: 0;
     }
 
-    &__fieldset:has(input[name="theme"]) &__options {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px 10px;
-    }
-
-    &__fieldset:has(input[name="player"]) &__options {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
+    &__fieldset:has(input[name="theme"]) &__options,
+    &__fieldset:has(input[name="player"]) &__options,
     &__fieldset:has(input[name="board"]) &__options {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      column-gap: 16px;
+      row-gap: 14px;
+      margin-left: 0;
     }
 
-     &__legend {
+    &__legend {
       float: left;
       width: 100%;
       margin-bottom: 16px;
       padding: 0;
       font-size: a.font-scale(22px);
       text-align: left;
-    }
 
-    &__legend::before {
-      display: none;
+      &::before {
+        display: none;
+      }
     }
 
     &__right {
@@ -316,7 +309,7 @@
     }
 
     &__preview-themes {
-      width: min(100%, 460px);
+      width: min(100%, clamp(200px, calc(90dvh - 440px), 460px));
       height: auto;
       aspect-ratio: 460 / 412;
       align-self: center;
@@ -347,6 +340,124 @@
       width: 100%;
       min-height: 53px;
       margin: 8px 0 0;
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .settings {
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &__content {
+      width: 100%;
+      min-height: 100%;
+      padding: 8px 8px 0;
+      transform: none;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      display: none;
+    }
+
+    &__title-img {
+      display: none;
+    }
+
+    &__form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 8px;
+
+      width: 100%;
+      margin-top: 0;
+      flex: 1;
+    }
+
+    &__left {
+      grid-column: 1;
+      grid-row: 1;
+      gap: 8px;
+    }
+
+    &__fieldset {
+      padding: 8px;
+    }
+
+    &__legend {
+      width: 100%;
+      margin: 0 auto 4px;
+
+      font-size: a.font-scale(20px);
+      text-align: left;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-left: 0;
+    }
+
+    &__option {
+      font-size: a.font-scale(16px);
+
+      &::after {
+        display: none;
+      }
+    }
+
+    &__right {
+      display: contents;
+    }
+
+    &__preview-themes {
+      grid-column: 2;
+      grid-row: 1;
+
+      width: min(100%, a.scale(700px));
+      height: auto;
+      justify-self: center;
+    }
+
+    &__chosen-settings {
+      grid-column: 1 / -1;
+      grid-row: 2;
+
+      width: calc(100% + 48px);
+      margin: 0 0 0 -24px;
+      padding: 8px 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 16px;
+
+      white-space: normal;
+    }
+
+    &__chosen-settings-img {
+      display: none;
+    }
+
+    &__button {
+      flex-basis: 100%;
+      width: 100%;
+      min-height: 53px;
+      margin: 0;
     }
   }
 }

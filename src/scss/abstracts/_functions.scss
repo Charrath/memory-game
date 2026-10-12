@@ -31,10 +31,14 @@ $design-height: 1024;
 
   $min: 1rem;
 
-  @if $rem >= 2rem {
-    $min: 2rem;
-  } @else if $rem >= 1.5rem {
-    $min: 1.25rem;
+  @if $size >= 100px {
+    $min: 1.5rem;
+  } @else if $size >= 64px {
+    $min: 1.375rem; 
+  } @else if $size >= 48px {
+    $min: 1.25rem; 
+  } @else if $size >= 32px {
+    $min: 1.125rem; 
   }
 
   $number: math.div($size, 1px);
