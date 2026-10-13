@@ -1,0 +1,116 @@
+@use "../../abstracts" as a;
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .settings {
+    display: block;
+    height: 100dvh;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &__content {
+      width: 100%;
+      min-height: 100%;
+      padding: 8px 8px 0;
+      transform: none;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      display: none;
+    }
+
+    &__title-img {
+      display: none;
+    }
+
+    &__form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 8px;
+
+      width: 100%;
+      margin-top: 0;
+      flex: 1;
+    }
+
+    &__left {
+      grid-column: 1;
+      grid-row: 1;
+      gap: 8px;
+    }
+
+    &__fieldset {
+      padding: 8px;
+    }
+
+    &__legend {
+      width: 100%;
+      margin: 0 auto 4px;
+
+      text-align: left;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-left: 0;
+    }
+
+    &__option {
+      &::after {
+        display: none;
+      }
+    }
+
+    &__right {
+      display: contents;
+    }
+
+    &__preview-themes {
+      grid-column: 2;
+      grid-row: 1;
+      width: min(100%, a.scale(700px));
+
+      height: auto;
+      justify-self: center;
+    }
+
+    &__chosen-settings {
+      grid-column: 1 / -1;
+      grid-row: 2;
+
+      width: calc(100% + 48px);
+      margin: 0 0 0 -24px;
+      padding: 8px 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      gap: 16px;
+
+      white-space: normal;
+    }
+
+    &__chosen-settings-img {
+      display: none;
+    }
+
+    &__button {
+      flex-basis: 100%;
+      width: 100%;
+      min-height: 53px;
+      margin: 0;
+    }
+  }
+}
