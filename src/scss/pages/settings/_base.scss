@@ -172,7 +172,10 @@
   &__chosen-settings {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+
     padding: a.scale(14px) a.scale(20px);
+    width: a.scale(546px);
 
     font-size: a.font-scale(20px);
     font-weight: 400;
