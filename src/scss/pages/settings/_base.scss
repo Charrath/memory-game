@@ -175,7 +175,7 @@
     justify-content: space-around;
 
     padding: a.scale(14px) a.scale(20px);
-    width: a.scale(546px);
+    // width: a.scale(546px);
 
     font-size: a.font-scale(20px);
     font-weight: 400;
@@ -205,7 +205,7 @@
 
     transition: transform 0.3s ease;
 
-    &:hover {
+    &:not(:disabled):hover {
       transform: scale(1.05);
 
       .settings__button-icon {
@@ -213,12 +213,25 @@
       }
     }
 
+    &:disabled {
+      background-color: rgba(219, 219, 214, 1);
+      color: rgba(163, 161, 161, 1);
+      cursor: not-allowed;
+    }
+
     &-icon {
-      height: a.font-scale(24px);
+      display: inline-block;
+      width: a.scale(24px);
+      height: a.scale(24px);
+
+      background-color: currentColor;
+
+      mask-image: url("/assets/images/settings/start.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+
       transition: transform 0.3s ease;
     }
   }
 }
-
-
-

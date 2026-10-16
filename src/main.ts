@@ -1,9 +1,27 @@
 import "./scss/main.scss";
 
+import {
+  settings,
+  THEMES,
+  PLAYERS,
+  BOARD_SIZES,
+  type Theme,
+  type Player,
+  type BoardSize,
+  type SettingConfig,
+} from "./config/settings";
+
 interface GameSettings {
-  theme: string;
-  player: string;
-  board: number;
+  theme: Theme;
+  player: Player;
+  board: BoardSize;
+}
+
+function isValidOption<T extends string | number>(
+  value: string | number,
+  options: readonly T[],
+): value is T {
+  return options.some((option) => option === value);
 }
 
 initApp();
@@ -33,9 +51,7 @@ function setupHomeNavigation(): void {
 
   if (!startButton) return;
 
-  startButton.addEventListener("click", () => {
-    showSettingsScreen();
-  });
+  startButton.addEventListener("click", showSettingsScreen);
 }
 
 function showSettingsScreen(): void {
@@ -51,22 +67,29 @@ function showSettingsScreen(): void {
 function setupSettings(): void {
   const groups = ["theme", "player", "board"];
 
-  groups.forEach((groupName) => {
+  for (const groupName of groups) {
     setupSettingGroup(groupName, `selected-${groupName}`);
-  });
+  }
 }
 
 function setupSettingGroup(groupName: string, displayId: string): void {
   updateInitialSelection(groupName, displayId);
+  setupSettingChangeListeners(groupName, displayId);
+}
+
+function setupSettingChangeListeners(
+  groupName: string,
+  displayId: string,
+): void {
   const inputs = document.querySelectorAll<HTMLInputElement>(
     `input[name="${groupName}"]`,
   );
 
-  inputs.forEach((input) => {
+  for (const input of inputs) {
     input.addEventListener("change", () => {
       updateSettingDisplay(input, displayId);
     });
-  });
+  }
 }
 
 function updateInitialSelection(groupName: string, displayId: string): void {
@@ -79,22 +102,26 @@ function updateInitialSelection(groupName: string, displayId: string): void {
   }
 }
 
+function getSettingLabel(group: string, value: string): string | null {
+  const groups: SettingConfig = settings;
+  return groups[group]?.[value]?.label ?? null;
+}
+
 function updateSettingDisplay(
   input: HTMLInputElement,
   displayId: string,
 ): void {
   const display = document.getElementById(displayId);
-  const label = input.closest("label");
+  if (!display) return;
 
-  if (!display || !label) return;
+  const label = getSettingLabel(input.name, input.value);
+  if (label === null) return;
 
-  display.textContent = label.textContent?.trim() ?? "";
+  display.textContent = label;
 }
 
 function setupSettingsSubmit(): void {
-  const form = document.querySelector<HTMLFormElement>(
-    ".settings__form",
-  );
+  const form = document.querySelector<HTMLFormElement>(".settings__form");
 
   if (!form) return;
 
@@ -104,25 +131,27 @@ function setupSettingsSubmit(): void {
 function handleSettingsSubmit(event: SubmitEvent): void {
   event.preventDefault();
 
-  const settings = getGameSettings();
+  const form = event.currentTarget;
+  if (!(form instanceof HTMLFormElement)) return;
 
+  const settings = getGameSettings(form);
   if (!settings) return;
 
   startGame(settings);
 }
 
-function getGameSettings(): GameSettings | null {
-  const theme = document.querySelector<HTMLInputElement>('input[name="theme"]:checked');
-  const player = document.querySelector<HTMLInputElement>('input[name="player"]:checked');
-  const board = document.querySelector<HTMLInputElement>('input[name="board"]:checked');
+function getGameSettings(form: HTMLFormElement): GameSettings | null {
+  const data = new FormData(form);
+  const theme = data.get("theme");
+  const player = data.get("player");
+  const board = Number(data.get("board"));
 
-  if (!theme || !player || !board) return null;
+  if (typeof theme !== "string" || !isValidOption(theme, THEMES)) return null;
+  if (typeof player !== "string" || !isValidOption(player, PLAYERS))
+    return null;
+  if (!isValidOption(board, BOARD_SIZES)) return null;
 
-  return {
-    theme: theme.value,
-    player: player.value,
-    board: Number(board.value),
-  };
+  return { theme, player, board };
 }
 
 function startGame(settings: GameSettings): void {

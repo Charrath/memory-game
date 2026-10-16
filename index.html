@@ -9,13 +9,17 @@
   </head>
   <body>
     <main>
-      <section id="home-screen" class="home">
+      <section id="home-screen" class="home" hidden>
         <header class="home__header">
           <p class="home__subtitle">It's play time.</p>
           <h1 class="home__title">Ready to play?</h1>
         </header>
         <div class="home__decoration game-controller" aria-hidden="true"></div>
-        <button id="home-screen-button" class="home__button button button--primary" type="button">
+        <button
+          id="home-screen-button"
+          class="home__button button button--primary"
+          type="button"
+        >
           <span
             class="home__button-icon game-controller"
             aria-hidden="true"
@@ -25,7 +29,7 @@
         </button>
       </section>
 
-      <section id="settings-screen" class="settings" hidden>
+      <section id="settings-screen" class="settings">
         <div class="settings__content">
           <header>
             <h1 class="settings__title">Settings</h1>
@@ -44,7 +48,7 @@
                 </legend>
                 <div class="settings__options">
                   <label class="settings__option">
-                    <input type="radio" name="theme" value="coding" checked />
+                    <input type="radio" name="theme" value="coding" />
                     Code vibes
                   </label>
 
@@ -71,7 +75,7 @@
                 </legend>
                 <div class="settings__options">
                   <label class="settings__option">
-                    <input type="radio" name="player" value="blue" checked />
+                    <input type="radio" name="player" value="blue" />
                     Blue
                   </label>
 
@@ -88,7 +92,7 @@
                 </legend>
                 <div class="settings__options">
                   <label class="settings__option">
-                    <input type="radio" name="board" value="16" checked />
+                    <input type="radio" name="board" value="16" />
                     16 cards
                   </label>
                   <label class="settings__option">
@@ -107,31 +111,42 @@
               <div class="settings__preview-themes"></div>
 
               <div class="settings__chosen-settings">
-                <span id="selected-theme">Code vibes</span>
+                <span id="selected-theme">Theme</span>
                 <img
                   class="settings__chosen-settings-img"
                   src="/assets/images/icons/yellow-arrow.svg"
                   alt=""
                 />
-                <span id="selected-player">Blue</span>
+                <span id="selected-player">Player</span>
                 <img
                   class="settings__chosen-settings-img"
                   src="/assets/images/icons/yellow-arrow.svg"
                   alt=""
                 />
-                <span id="selected-board">16 Cards</span>
-                <button class="settings__button button button--primary" type="submit">
-                  <img
-                    class="settings__button-icon"
-                    src="/assets/images/settings/start.svg"
-                    alt=""
-                  />
+                <span id="selected-board">Board size</span>
+                <button
+                  class="settings__button button button--primary"
+                  type="submit"
+                  disabled
+                >
+                  <span class="settings__button-icon" aria-hidden="true"></span>
                   <span> Start </span>
                 </button>
               </div>
             </div>
           </form>
         </div>
+      </section>
+      <section id="game-screen" class="game" hidden>
+        <header class="game__header">
+          <div class="game__scores">
+            <span>Blue: 0</span>
+            <span>Orange: 0</span>
+          </div>
+          <div class="game__current-player">Current player</div>
+          <button class="game__exit" type="button">Exit game</button>
+        </header>
+        <div id="game-board" class="game__board"></div>
       </section>
     </main>
     <!-- <section id="field">
