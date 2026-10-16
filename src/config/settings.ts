@@ -21,14 +21,14 @@ export const settings = {
 
     gaming: {
       label: "Gaming theme",
-      preview: "/assets/images/settings/themes/gaming.svg",
+      preview: "/assets/images/settings/themes/gaming.png",
       primaryColor: "#7654D1",
       borderColor: "#FFFFFF",
     },
 
     projects: {
       label: "DA Projects theme",
-      preview: "/assets/images/settings/themes/projects.svg",
+      preview: "/assets/images/settings/themes/projects.png",
       primaryColor: "#FFFFFF",
       borderColor: "#000000",
     },

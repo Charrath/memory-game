@@ -73,7 +73,6 @@ function setupSettings(): void {
 }
 
 function setupSettingGroup(groupName: string, displayId: string): void {
-  updateInitialSelection(groupName, displayId);
   setupSettingChangeListeners(groupName, displayId);
 }
 
@@ -88,17 +87,10 @@ function setupSettingChangeListeners(
   for (const input of inputs) {
     input.addEventListener("change", () => {
       updateSettingDisplay(input, displayId);
+      if (groupName === "theme") {
+        updateThemePreview(input);
+      }
     });
-  }
-}
-
-function updateInitialSelection(groupName: string, displayId: string): void {
-  const selectedInput = document.querySelector<HTMLInputElement>(
-    `input[name="${groupName}"]:checked`,
-  );
-
-  if (selectedInput) {
-    updateSettingDisplay(selectedInput, displayId);
   }
 }
 
@@ -118,6 +110,18 @@ function updateSettingDisplay(
   if (label === null) return;
 
   display.textContent = label;
+}
+
+function updateThemePreview(input: HTMLInputElement): void {
+  if (!isValidOption(input.value, THEMES)) return;
+
+  const preview = document.querySelector<HTMLElement>(
+    ".settings__preview-themes",
+  );
+  if (!preview) return;
+
+  const imagePath = settings.theme[input.value].preview;
+  preview.style.backgroundImage = `url("${imagePath}")`;
 }
 
 function setupSettingsSubmit(): void {

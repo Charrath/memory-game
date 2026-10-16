@@ -145,37 +145,12 @@
     background-size: contain;
   }
 
-  &:has(input[value="coding"]:checked) {
-    .settings__preview-themes {
-      background-image: url("/assets/images/settings/themes/code.png");
-    }
-  }
-
-  &:has(input[value="gaming"]:checked) {
-    .settings__preview-themes {
-      background-image: url("/assets/images/settings/themes/gaming.png");
-    }
-  }
-
-  &:has(input[value="projects"]:checked) {
-    .settings__preview-themes {
-      background-image: url("/assets/images/settings/themes/projects.png");
-    }
-  }
-
-  &:has(input[value="foods"]:checked) {
-    .settings__preview-themes {
-      background-image: url("/assets/images/settings/themes/foods.png");
-    }
-  }
-
   &__chosen-settings {
     display: flex;
     align-items: center;
     justify-content: space-around;
 
     padding: a.scale(14px) a.scale(20px);
-    // width: a.scale(546px);
 
     font-size: a.font-scale(20px);
     font-weight: 400;
