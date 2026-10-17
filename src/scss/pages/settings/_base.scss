@@ -163,6 +163,10 @@
       height: auto;
       flex-shrink: 0;
 
+      .settings__form.is-complete & {
+        content: url("/assets/images/icons/yellow-arrow.svg");
+      }
+
       transform: rotate(109.33deg);
     }
   }

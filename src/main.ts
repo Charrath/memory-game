@@ -130,6 +130,26 @@ function setupSettingsSubmit(): void {
   if (!form) return;
 
   form.addEventListener("submit", handleSettingsSubmit);
+
+  form.addEventListener("change", () => {
+    updateSettingsState(form);
+  });
+
+  updateSettingsState(form);
+}
+
+function updateSettingsState(form: HTMLFormElement): void {
+  const gameSettings = getGameSettings(form);
+  const isComplete = gameSettings !== null;
+
+  const settingsButton =
+    document.querySelector<HTMLButtonElement>(".settings__button");
+
+  if (!settingsButton) return;
+
+  settingsButton.disabled = !isComplete;
+
+  form.classList.toggle("is-complete", isComplete);
 }
 
 function handleSettingsSubmit(event: SubmitEvent): void {
