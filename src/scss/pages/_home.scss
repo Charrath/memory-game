@@ -53,7 +53,7 @@
     width: a.scale(250px);
     height: a.scale(98px);
 
-    font-size: a.scale(40px);
+    font-size: a.font-scale(40px);
 
     transition: scale 0.3s ease;
 
@@ -71,7 +71,7 @@
   }
 
   &__button-icon {
-    height: a.scale(32px);
+    height: a.font-scale(32px);
     transition: transform 0.3s ease;
   }
 

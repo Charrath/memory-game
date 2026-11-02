@@ -1,4 +1,13 @@
 @media (max-width: 768px) {
+  .home {
+    &__button {
+      min-width: 100px;
+      min-height: 40px;
+    }
+  }
+  
+  
+  
   .settings {
     display: block;
     height: 100dvh;
@@ -119,6 +128,11 @@
       width: 100%;
       min-height: 53px;
       margin: 8px 0 0;
+
+      &-icon {
+        min-height: 20px;
+        min-width: 20px;
+      }
     }
   }
 }

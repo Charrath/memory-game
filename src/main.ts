@@ -68,12 +68,8 @@ function setupSettings(): void {
   const groups = ["theme", "player", "board"];
 
   for (const groupName of groups) {
-    setupSettingGroup(groupName, `selected-${groupName}`);
+    setupSettingChangeListeners(groupName, `selected-${groupName}`);
   }
-}
-
-function setupSettingGroup(groupName: string, displayId: string): void {
-  setupSettingChangeListeners(groupName, displayId);
 }
 
 function setupSettingChangeListeners(
@@ -85,12 +81,17 @@ function setupSettingChangeListeners(
   );
 
   for (const input of inputs) {
-    input.addEventListener("change", () => {
-      updateSettingDisplay(input, displayId);
-      if (groupName === "theme") {
-        updateThemePreview(input);
-      }
-    });
+    input.addEventListener("change", () =>
+      handleSettingChange(input, displayId),
+    );
+  }
+}
+
+function handleSettingChange(input: HTMLInputElement, displayId: string): void {
+  updateSettingDisplay(input, displayId);
+
+  if (input.name === "theme") {
+    updateThemePreview(input);
   }
 }
 
@@ -126,30 +127,29 @@ function updateThemePreview(input: HTMLInputElement): void {
 
 function setupSettingsSubmit(): void {
   const form = document.querySelector<HTMLFormElement>(".settings__form");
-
   if (!form) return;
 
-  form.addEventListener("submit", handleSettingsSubmit);
-
-  form.addEventListener("change", () => {
-    updateSettingsState(form);
-  });
-
+  setupFormListeners(form);
   updateSettingsState(form);
 }
 
+function setupFormListeners(form: HTMLFormElement): void {
+  form.addEventListener("submit", handleSettingsSubmit);
+  form.addEventListener("change", () => updateSettingsState(form));
+}
+
 function updateSettingsState(form: HTMLFormElement): void {
-  const gameSettings = getGameSettings(form);
-  const isComplete = gameSettings !== null;
+  const isComplete = getGameSettings(form) !== null;
 
-  const settingsButton =
-    document.querySelector<HTMLButtonElement>(".settings__button");
-
-  if (!settingsButton) return;
-
-  settingsButton.disabled = !isComplete;
-
+  updateSettingsButton(isComplete);
   form.classList.toggle("is-complete", isComplete);
+}
+
+function updateSettingsButton(isComplete: boolean): void {
+  const button = document.querySelector<HTMLButtonElement>(".settings__button");
+
+  if (!button) return;
+  button.disabled = !isComplete;
 }
 
 function handleSettingsSubmit(event: SubmitEvent): void {
